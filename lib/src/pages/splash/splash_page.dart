@@ -11,7 +11,7 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _timeToContinue()
-        .then((value) => AppRoutes.loginPage.pushReplacement(context));
+        .then((value) => AppRoutes.loginPage.pushReplacement());
 
     return const Scaffold(
       body: Center(child: Text('Splash Page')),

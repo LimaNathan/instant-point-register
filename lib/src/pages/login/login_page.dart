@@ -92,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                                     ),
                                   ),
                                   onPressed: () =>
-                                      AppRoutes.mainPage.pushNamed(context),
+                                      AppRoutes.mainPage.pushNamed(),
                                 ),
                               ],
                             ),

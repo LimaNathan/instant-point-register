@@ -11,7 +11,8 @@ class AppIcons {
   static const eyeslash = '$_path/eyeslash.svg';
   static const gallery = '$_path/gallery.svg';
   static const home = '$_path/home.svg';
-  static const logoucurve = '$_path/logoucurve.svg';
+  static const logoutcurve = '$_path/logoutcurve.svg';
+
   static const refreshsquare = '$_path/refreshsquare.svg';
   static const user = '$_path/user.svg';
   static const arrowleft = '$_path/arrowleft.svg';

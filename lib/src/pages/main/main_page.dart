@@ -19,6 +19,7 @@ class MainPage extends StatelessWidget {
     MainPageStore store = GetIt.I<MainPageStore>();
 
     return Scaffold(
+      backgroundColor: Colors.grey.shade100,
       appBar: CustomAppBar(),
       body: Observer(
           builder: (_) => PageView(
@@ -32,9 +33,10 @@ class MainPage extends StatelessWidget {
               )),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: Container(
+        
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(22),
-              border: Border.all(color: Colors.white, width: 8)),
+              border: Border.all(color: Colors.grey.shade100, width: 8)),
           width: 95,
           height: 95,
           child: FloatingActionButton(

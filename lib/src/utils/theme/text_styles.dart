@@ -21,6 +21,11 @@ class TextStyles {
   static TextStyle lightTextStyle = GoogleFonts.inter(
       fontSize: 14, fontWeight: FontWeight.w300, color: Colors.white);
 
+  static TextStyle bluelightTextStyle = GoogleFonts.inter(
+      fontSize: 14,
+      fontWeight: FontWeight.w300,
+      color: AppColors.darkPrimaryColor);
+
   static TextStyle mediumTextStyle = GoogleFonts.inter(
     fontSize: 14,
     fontWeight: FontWeight.w500,
@@ -52,5 +57,11 @@ class TextStyles {
     fontSize: 18,
     fontWeight: FontWeight.w600,
     color: AppColors.darkPrimaryColor,
+  );
+
+  static TextStyle userPageTextStyle = GoogleFonts.inter(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.primaryColor,
   );
 }
