@@ -9,7 +9,13 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) => Column(
         children: const [
           AddressBarWidget(),
-          ExpandedCard(label: 'Registros do dia'),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+            child: ExpandedCard(
+              cardRadius: 12,
+              label: 'Registros do dia',
+            ),
+          ),
         ],
       );
 }

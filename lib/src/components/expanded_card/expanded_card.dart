@@ -7,7 +7,9 @@ import 'package:registro_ponto/src/utils/theme/text_styles.dart';
 
 class ExpandedCard extends StatefulWidget {
   final String label;
-  const ExpandedCard({Key? key, required this.label}) : super(key: key);
+  final double? cardRadius;
+  const ExpandedCard({Key? key, required this.label, this.cardRadius})
+      : super(key: key);
 
   @override
   State<ExpandedCard> createState() => _ExpandedCardState();
@@ -30,13 +32,13 @@ class _ExpandedCardState extends State<ExpandedCard>
           }
         }),
         duration: const Duration(milliseconds: 200),
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
         width: double.infinity,
         height: height,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(width: 0.3)
-        ),
+        decoration: widget.cardRadius != null
+            ? BoxDecoration(
+                borderRadius: BorderRadius.circular(widget.cardRadius ?? 12),
+                border: Border.all(width: 0.3))
+            : null,
         child: Container(
           margin: const EdgeInsets.all(16.0),
           child: Column(

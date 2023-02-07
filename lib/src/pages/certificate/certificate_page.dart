@@ -16,7 +16,7 @@ class CertificatePage extends StatefulWidget {
 class _CertificatePageState extends State<CertificatePage> {
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 50.0),
+        padding: const EdgeInsets.symmetric(horizontal: 22.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
