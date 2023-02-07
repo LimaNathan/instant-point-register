@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:registro_ponto/src/components/button_custom/button.dart';
 import 'package:registro_ponto/src/components/custom_text_form_field/custom_text_form_field.dart';
 import 'package:registro_ponto/src/components/custom_dialogs/custom_dialogs.dart';
+import 'package:registro_ponto/src/components/lazy_loading/lazy_loading_widget.dart';
 import 'package:registro_ponto/src/utils/constants/app_icons.dart';
 import 'package:registro_ponto/src/utils/constants/app_routes.dart';
 import 'package:registro_ponto/src/utils/extensions/num_ext.dart';
@@ -47,7 +48,9 @@ class _LoginPageState extends State<LoginPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SvgPicture.asset('assets/logo.svg'),
+                            SvgPicture.asset('assets/logo.svg',
+                                placeholderBuilder: (context) =>
+                                    const LazyLoading()),
                             Text(
                               'Registro de ponto eletrônico',
                               style: GoogleFonts.inter(
@@ -89,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                                     ),
                                   ),
                                   onPressed: () =>
-                                      AppRoutes.homePage.pushNamed(context),
+                                      AppRoutes.mainPage.pushNamed(context),
                                 ),
                               ],
                             ),

@@ -3,4 +3,5 @@ class AppRoutes {
   static const String homePage = '/home_page';
   static const String loginPage = '/login_page';
   static const String mainPage = '/main_page';
+  static const String certificatePage = '/certificate_page';
 }

@@ -1,7 +1,11 @@
+import 'dart:io';
+
+import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
-import 'package:registro_ponto/src/components/custom_dialogs/custom_dialogs.dart';
-import 'package:registro_ponto/src/components/icon_button/custom_icon_button.dart';
+import 'package:registro_ponto/src/components/app_bottom_bar/selected_icon.dart';
+import 'package:registro_ponto/src/components/app_bottom_bar/unselected_icon.dart';
 import 'package:registro_ponto/src/stores/main_page/main_page_store.dart';
 import 'package:registro_ponto/src/utils/constants/app_icons.dart';
 import 'package:registro_ponto/src/utils/extensions/num_ext.dart';
@@ -19,34 +23,42 @@ class _AppBottomBarState extends State<AppBottomBar> {
   MainPageStore store = GetIt.I<MainPageStore>();
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      height: 60,
-      decoration: BoxDecoration(gradient: AppColors.linearGradient),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          IconButtonC(
-              color: Colors.white,
-              icon: AppIcons.home,
-              onPressed: () => store.controller.animateToPage(0,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeInOut)),
-          IconButtonC(
-            color: Colors.white,
-            icon: AppIcons.documenttext,
-            onPressed: () async => await CustomDialogs.certificateDialog(),
-          ),
-          IconButtonC(
-              color: Colors.white,
-              icon: AppIcons.clock,
-              onPressed: () => store.controller.animateToPage(1,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeInOut)),
-          (SizeUtils.width * 1 / 10).paddingW,
-        ],
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Observer(
+        builder: (context) {
+          var currentPage = store.currentPage;
+          if (currentPage == store.currentPage) {}
+          return CustomNavigationBar(
+            iconSize: 24.0,
+            currentIndex: currentPage,
+            borderRadius: Platform.isAndroid
+                ? const Radius.circular(0)
+                : const Radius.circular(12),
+            backgroundColor: AppColors.lightPrimaryColor,
+            isFloating: Platform.isAndroid ? false : true,
+            scaleCurve: Curves.easeInQuad,
+            onTap: (int index) async => store.controller
+                .animateToPage(index,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut)
+                .then(
+                  (value) => store.updateCurrentPage(index),
+                ),
+            items: [
+              CustomNavigationBarItem(
+                selectedIcon: const SelectedIcon(icon: AppIcons.home),
+                icon: const UnselectedIcon(icon: AppIcons.home),
+              ),
+              CustomNavigationBarItem(
+                selectedIcon: const SelectedIcon(icon: AppIcons.clock),
+                icon: const UnselectedIcon(icon: AppIcons.clock),
+              ),
+              CustomNavigationBarItem(
+                selectedIcon: const SelectedIcon(icon: AppIcons.documenttext),
+                icon: const UnselectedIcon(icon: AppIcons.documenttext),
+              ),
+              CustomNavigationBarItem(icon: (SizeUtils.width * 1 / 10).paddingW)
+            ],
+          );
+        },
+      );
 }

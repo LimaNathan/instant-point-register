@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:registro_ponto/src/components/dialog/dialog_factory.dart';
+import 'package:registro_ponto/src/pages/certificate/certificate_page.dart';
 import 'package:registro_ponto/src/pages/home/home_page.dart';
 import 'package:registro_ponto/src/pages/login/login_page.dart';
 import 'package:registro_ponto/src/pages/main/main_page.dart';
@@ -20,12 +21,13 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       navigatorKey: DialogFactory.navigatorKey,
-      initialRoute: AppRoutes.mainPage,
+      initialRoute: AppRoutes.splashPage,
       routes: {
         AppRoutes.mainPage: (_) => const MainPage(),
         AppRoutes.splashPage: (_) => const SplashPage(),
         AppRoutes.homePage: (_) => const HomePage(),
         AppRoutes.loginPage: (_) => const LoginPage(),
+        AppRoutes.certificatePage: (_) => const CertificatePage(),
       },
     );
   }

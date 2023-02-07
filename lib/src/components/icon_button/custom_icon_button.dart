@@ -8,11 +8,13 @@ class IconButtonC extends StatefulWidget {
   final String icon;
   final void Function()? onPressed;
   final Color? color;
+  final double? size;
   const IconButtonC({
     super.key,
     required this.icon,
     this.onPressed,
     this.color,
+    this.size,
   });
 
   @override
@@ -24,8 +26,8 @@ class _IconButtonCState extends State<IconButtonC> {
   Widget build(BuildContext context) => InkWell(
         onTap: widget.onPressed,
         child: SizedBox(
-          height: 24,
-          width: 24,
+          height: widget.size != null ? widget.size! : 24,
+          width: widget.size != null ? widget.size! : 24,
           child: SvgPicture.asset(
             placeholderBuilder: (context) => const LazyLoading(),
             widget.icon,

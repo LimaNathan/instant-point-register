@@ -3,12 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:registro_ponto/src/utils/theme/app_colors.dart';
 
 class TextStyles {
-  static TextStyle formTextStyle = GoogleFonts.roboto(
+  static TextStyle formTextStyle = GoogleFonts.inter(
     color: AppColors.lightPrimaryColor,
   );
 
-  static TextStyle buttonTextStyle = GoogleFonts.roboto(
+  static TextStyle buttonTextStyle = GoogleFonts.inter(
     color: Colors.white,
+    fontWeight: FontWeight.w600,
   );
 
   static TextStyle appBarTitleStyle = GoogleFonts.inter(
