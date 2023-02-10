@@ -21,14 +21,14 @@ dependencies:
   location: ^4.4.0
   geocoding: ^2.0.5
   custom_navigation_bar: ^0.8.2
+  iconsax: ^0.0.8
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  flutter_lints: ^2.0.0
   build_runner: ^2.3.3
   mobx_codegen: ^2.1.1
+  flutterando_analysis: ^0.0.2
 
 flutter:
   uses-material-design: true

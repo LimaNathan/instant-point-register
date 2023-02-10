@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:registro_ponto/src/pages/user/user_info_card_item.dart';
-import 'package:registro_ponto/src/utils/constants/app_icons.dart';
-import 'package:registro_ponto/src/utils/theme/app_colors.dart';
-
+import 'package:registro_ponto/src/shared/utils/constants/app_icons.dart';
 class UserInfoCard extends StatelessWidget {
   const UserInfoCard({Key? key}) : super(key: key);
 
@@ -13,7 +11,7 @@ class UserInfoCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             width: 0.1,
-            color: AppColors.primaryColor,
+            color:Theme.of(context).colorScheme.primaryContainer,
           ),
         ),
         child: Column(

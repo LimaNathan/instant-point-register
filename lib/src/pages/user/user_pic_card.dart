@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:registro_ponto/src/components/icon_button/custom_icon_button.dart';
-import 'package:registro_ponto/src/utils/constants/app_icons.dart';
-import 'package:registro_ponto/src/utils/theme/app_colors.dart';
+import 'package:registro_ponto/src/shared/utils/constants/app_icons.dart';
+
+import 'package:registro_ponto/src/widgets/icon_button/custom_icon_button.dart';
 
 class UserPicCard extends StatelessWidget {
   const UserPicCard({Key? key}) : super(key: key);
@@ -11,7 +11,7 @@ class UserPicCard extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            color: AppColors.shadowPrimaryColor,
+            color: Theme.of(context).colorScheme.outline,
           ),
           width: 162,
           height: 162,

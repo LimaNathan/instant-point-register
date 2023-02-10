@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:registro_ponto/src/components/icon_button/custom_icon_button.dart';
-import 'package:registro_ponto/src/utils/theme/app_colors.dart';
-import 'package:registro_ponto/src/utils/theme/text_styles.dart';
+import 'package:registro_ponto/src/widgets/icon_button/custom_icon_button.dart';
 
 class UserPageButton extends StatelessWidget {
   final String label;
@@ -17,7 +15,8 @@ class UserPageButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) => InkWell(
         overlayColor: MaterialStateColor.resolveWith(
-            (states) => AppColors.primaryAccentColor),
+          (states) => Theme.of(context).colorScheme.primaryContainer,
+        ),
         radius: 12,
         onTap: onPressed,
         child: Container(
@@ -28,7 +27,7 @@ class UserPageButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               width: 0.1,
-              color: AppColors.primaryColor,
+              color: Theme.of(context).colorScheme.primary,
             ),
           ),
           child: Row(
@@ -36,7 +35,7 @@ class UserPageButton extends StatelessWidget {
             children: [
               Text(
                 label,
-                style: TextStyles.userPageTextStyle,
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
               IconButtonC(icon: icon),
             ],

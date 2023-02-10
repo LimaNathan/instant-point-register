@@ -53,7 +53,7 @@ mixin _$MainPageStore on MainPageStoreBase, Store {
       ActionController(name: 'MainPageStoreBase', context: context);
 
   @override
-  void updateCurrentPage(int newPage) {
+  int updateCurrentPage(int newPage) {
     final _$actionInfo = _$MainPageStoreBaseActionController.startAction(
         name: 'MainPageStoreBase.updateCurrentPage');
     try {

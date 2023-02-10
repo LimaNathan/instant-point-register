@@ -1,53 +1,105 @@
+import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
-import 'package:registro_ponto/src/components/app_bar/custom_app_bar.dart';
-import 'package:registro_ponto/src/components/app_bottom_bar/app_bottom_bar.dart';
-import 'package:registro_ponto/src/components/icon_button/custom_icon_button.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:registro_ponto/src/pages/certificate/certificate_page.dart';
 import 'package:registro_ponto/src/pages/historic_page/historic_page.dart';
 import 'package:registro_ponto/src/pages/home/home_page.dart';
+import 'package:registro_ponto/src/shared/utils/constants/app_routes.dart';
+import 'package:registro_ponto/src/shared/utils/extensions/string_ext.dart';
 import 'package:registro_ponto/src/stores/main_page/main_page_store.dart';
-import 'package:registro_ponto/src/utils/constants/app_icons.dart';
-import 'package:registro_ponto/src/utils/theme/app_colors.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    MainPageStore store = GetIt.I<MainPageStore>();
+    final store = GetIt.I<MainPageStore>();
 
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
-      appBar: CustomAppBar(),
+      backgroundColor: Theme.of(context).colorScheme.background,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            icon: const Icon(Iconsax.user),
+            onPressed: () => AppRoutes.userPage.pushNamed(),
+          ),
+        ],
+        title: RichText(
+          text: TextSpan(
+            text: 'Bem vindo, ',
+            style: Theme.of(context).textTheme.titleMedium,
+            children: const [
+              TextSpan(
+                text: 'Nathan de Aguiar',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ),
+      ),
       body: Observer(
-          builder: (_) => PageView(
-                controller: store.controller,
-                onPageChanged: (value) => store.updateCurrentPage(value),
-                children: const [
-                  HomePage(),
-                  CertificatePage(),
-                  HistoricPage(),
-                ],
-              )),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-      floatingActionButton: Container(
-        
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(22),
-              border: Border.all(color: Colors.grey.shade100, width: 8)),
-          width: 95,
-          height: 95,
-          child: FloatingActionButton(
-              onPressed: () {},
-              backgroundColor: AppColors.primaryColor,
-              elevation: 0,
-              child: const IconButtonC(
-                icon: AppIcons.camera,
-                color: Colors.white,
-              ))),
-      bottomNavigationBar: const AppBottomBar(),
+        builder: (_) => PageView(
+          controller: store.controller,
+          onPageChanged: store.updateCurrentPage,
+          children: const [
+            HomePage(),
+            CertificatePage(),
+            HistoricPage(),
+          ],
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {},
+        icon: const Icon(
+          Iconsax.camera,
+        ),
+        label: const Text('Registrar ponto'),
+      ),
+      bottomNavigationBar: Observer(
+        builder: (context) {
+          final currentPage = store.currentPage;
+          return CustomNavigationBar(
+            currentIndex: currentPage,
+            borderRadius: const Radius.circular(12),
+            backgroundColor: Theme.of(context).colorScheme.secondary,
+            selectedColor: Theme.of(context).colorScheme.surface,
+            unSelectedColor: Theme.of(context).colorScheme.onSurfaceVariant,
+            strokeColor: Theme.of(context).colorScheme.secondaryContainer,
+            scaleFactor: 0.5,
+            isFloating: true,
+            onTap: (int index) async => store.controller
+                .animateToPage(
+                  index,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                )
+                .then(
+                  (value) => store.updateCurrentPage(index),
+                ),
+            items: [
+              CustomNavigationBarItem(
+                icon: const Icon(
+                  Iconsax.home,
+                ),
+              ),
+              CustomNavigationBarItem(
+                icon: const Icon(
+                  Iconsax.clock,
+                ),
+              ),
+              CustomNavigationBarItem(
+                icon: const Icon(
+                  Iconsax.document_text,
+                ),
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
 }

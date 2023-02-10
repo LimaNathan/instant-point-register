@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:registro_ponto/src/components/icon_button/custom_icon_button.dart';
-import 'package:registro_ponto/src/utils/extensions/num_ext.dart';
-import 'package:registro_ponto/src/utils/theme/text_styles.dart';
+import 'package:registro_ponto/src/shared/utils/extensions/num_ext.dart';
+import 'package:registro_ponto/src/widgets/icon_button/custom_icon_button.dart';
 
 class UserInfoCardItem extends StatelessWidget {
   final String icon;
@@ -23,7 +22,10 @@ class UserInfoCardItem extends StatelessWidget {
         children: [
           IconButtonC(icon: icon),
           13.paddingW,
-          Text(label, style: TextStyles.userPageTextStyle),
+          Text(
+            label,
+            style: Theme.of(context).textTheme.labelLarge,
+          ),
         ],
       ),
     );

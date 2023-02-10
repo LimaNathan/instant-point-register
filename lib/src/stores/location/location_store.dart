@@ -1,6 +1,6 @@
 import 'package:geocoding/geocoding.dart';
 import 'package:mobx/mobx.dart';
-import 'package:registro_ponto/src/utils/location/location_utils.dart';
+import 'package:registro_ponto/src/shared/utils/location/location_utils.dart';
 part 'location_store.g.dart';
 
 class LocationStore = LocationStoreBase with _$LocationStore;
@@ -14,13 +14,13 @@ abstract class LocationStoreBase with Store {
     try {
       late List<Placemark> placemarkers;
 
-      LocationUtils.getLocation().then((locationData) async {
+      await LocationUtils.getLocation().then((locationData) async {
         if (locationData != null) {
           placemarkers = await placemarkFromCoordinates(
             locationData.latitude!,
             locationData.longitude!,
           );
-          var list = placemarkers.first;
+          final list = placemarkers.first;
           address = '${list.street!}, ${list.name!} - ${list.subLocality!}';
         }
       });

@@ -15,5 +15,5 @@ abstract class MainPageStoreBase with Store {
   dynamic get currentPage => page;
 
   @action
-  void updateCurrentPage(int newPage) => page = newPage;
+  int updateCurrentPage(int newPage) => page = newPage;
 }
