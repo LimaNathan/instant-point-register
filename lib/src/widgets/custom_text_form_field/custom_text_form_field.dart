@@ -33,7 +33,6 @@ class CustomTextFormField extends StatelessWidget {
           decoration: InputDecoration(
             enabled: enabled,
             suffixIcon: icon,
-            suffixStyle: Theme.of(context).textTheme.bodySmall!.copyWith(),
             labelText: label,
           ),
         ),

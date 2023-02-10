@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:registro_ponto/src/shared/utils/constants/app_icons.dart';
 import 'package:registro_ponto/src/shared/utils/extensions/num_ext.dart';
-import 'package:registro_ponto/src/widgets/button_custom/button.dart';
 import 'package:registro_ponto/src/widgets/custom_text_form_field/custom_text_form_field.dart';
 
 class FormUpdatePass extends StatelessWidget {
@@ -48,11 +47,9 @@ class FormUpdatePass extends StatelessWidget {
           ),
         ),
         35.paddingH,
-        Button(
-          child: Text(
+        FilledButton(
+          child: const Text(
             'Alterar',
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodySmall,
           ),
           onPressed: () {},
         ),

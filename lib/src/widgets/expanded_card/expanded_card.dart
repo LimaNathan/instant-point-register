@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:registro_ponto/src/shared/utils/constants/app_icons.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:registro_ponto/src/widgets/expanded_card/expanded_details.dart';
-import 'package:registro_ponto/src/widgets/icon_button/custom_icon_button.dart';
 
 class ExpandedCard extends StatefulWidget {
   final String label;
@@ -15,7 +14,7 @@ class ExpandedCard extends StatefulWidget {
 
 class _ExpandedCardState extends State<ExpandedCard>
     with SingleTickerProviderStateMixin {
-  double height = 60;
+  double height = 85;
   double turns = 0;
 
   bool isExpanded = false;
@@ -23,9 +22,9 @@ class _ExpandedCardState extends State<ExpandedCard>
   @override
   Widget build(BuildContext context) => AnimatedContainer(
         onEnd: () => setState(() {
-          if (isExpanded == true && height == 60) {
+          if (isExpanded == true && height == 85) {
             isExpanded = false;
-          } else if (height == 150) {
+          } else if (height == 190) {
             isExpanded = true;
           }
         }),
@@ -52,13 +51,14 @@ class _ExpandedCardState extends State<ExpandedCard>
                   AnimatedRotation(
                     duration: const Duration(milliseconds: 200),
                     turns: turns,
-                    child: IconButtonC(
-                      icon: AppIcons.arrowdown,
+                    child: IconButton(
+                      icon: const Icon(Iconsax.arrow_down_1),
                       color: Theme.of(context).colorScheme.onPrimary,
                       onPressed: () => setState(
                         () {
-                          height = height == 150 ? 60 : 150;
-                          if (height == 60) isExpanded = false;
+                          height = height == 190 ? 85 : 190;
+
+                          if (height == 85) isExpanded = false;
                           if (isExpanded) {
                             turns -= 1 / 2;
                           } else {

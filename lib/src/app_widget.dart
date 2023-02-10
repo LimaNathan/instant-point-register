@@ -6,7 +6,7 @@ import 'package:registro_ponto/src/pages/main/main_page.dart';
 import 'package:registro_ponto/src/pages/splash/splash_page.dart';
 import 'package:registro_ponto/src/pages/update_pass/update_password_page.dart';
 import 'package:registro_ponto/src/pages/user/user_page.dart';
-import 'package:registro_ponto/src/shared/themes/theme.dart';
+import 'package:registro_ponto/src/shared/themes/custom_theme.dart';
 import 'package:registro_ponto/src/shared/utils/constants/app_routes.dart';
 import 'package:registro_ponto/src/widgets/dialog/dialog_factory.dart';
 

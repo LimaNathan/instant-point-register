@@ -25,13 +25,16 @@ class _DatePickerButtonState extends State<DatePickerButton> {
           children: [
             Text(
               'Data inicial',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: Theme.of(context).textTheme.bodySmall,
             ),
             Text(
               '${_dateTime.day < 10 ? '0${_dateTime.day}' : _dateTime.day}/'
               '${_dateTime.month < 10 ? '0${_dateTime.month}' : _dateTime.month}/'
               '${_dateTime.year}',
-              style: Theme.of(context).textTheme.displaySmall,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
           ],
         ),

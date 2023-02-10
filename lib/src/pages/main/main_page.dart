@@ -21,24 +21,29 @@ class MainPage extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            icon: const Icon(Iconsax.user),
-            onPressed: () => AppRoutes.userPage.pushNamed(),
-          ),
-        ],
         title: RichText(
           text: TextSpan(
             text: 'Bem vindo, ',
             style: Theme.of(context).textTheme.titleMedium,
-            children: const [
+            children: [
               TextSpan(
                 text: 'Nathan de Aguiar',
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
             ],
           ),
         ),
+        actions: [
+          CircleAvatar(
+            backgroundColor: Theme.of(context).colorScheme.background,
+            child: IconButton(
+              icon: const Icon(Iconsax.user),
+              onPressed: () => AppRoutes.userPage.pushNamed(),
+            ),
+          ),
+        ],
       ),
       body: Observer(
         builder: (_) => PageView(

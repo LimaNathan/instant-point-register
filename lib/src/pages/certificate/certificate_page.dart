@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:registro_ponto/src/shared/utils/extensions/num_ext.dart';
-import 'package:registro_ponto/src/widgets/button_custom/button.dart';
-
 import 'widgets/buttons_row.dart';
 import 'widgets/pick_date.dart';
 
@@ -45,9 +43,17 @@ class _CertificatePageState extends State<CertificatePage> {
             const ButtonsRow(),
             35.paddingH,
             Center(
-              child: Button(
-                color: Theme.of(context).colorScheme.onPrimaryContainer,
-                width: 250,
+              child: FilledButton(
+                style: Theme.of(context).filledButtonTheme.style?.copyWith(
+                      fixedSize: const MaterialStatePropertyAll(
+                        Size(160, 50),
+                      ),
+                      textStyle: MaterialStatePropertyAll(
+                        Theme.of(context).textTheme.titleMedium?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                    ),
                 child: Center(
                   child: Text(
                     'Enviar',

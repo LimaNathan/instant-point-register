@@ -26,7 +26,7 @@ class PickDate extends StatelessWidget {
               child: TextField(
                 textAlign: TextAlign.center,
                 keyboardType: TextInputType.number,
-                style: Theme.of(context).textTheme.bodySmall,
+                style: Theme.of(context).textTheme.titleSmall,
                 maxLength: 2,
                 buildCounter: (
                   context, {

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:registro_ponto/src/widgets/icon_button/custom_icon_button.dart';
 
 class UserPageButton extends StatelessWidget {
   final String label;
-  final String icon;
+  final IconData icon;
   final VoidCallback onPressed;
   const UserPageButton({
     Key? key,
@@ -23,7 +22,7 @@ class UserPageButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 19.5),
           height: 60,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.surfaceVariant,
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               width: 0.1,
@@ -35,9 +34,11 @@ class UserPageButton extends StatelessWidget {
             children: [
               Text(
                 label,
-                style: Theme.of(context).textTheme.bodyMedium,
+                style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                      fontSize: 16,
+                    ),
               ),
-              IconButtonC(icon: icon),
+              Icon(icon),
             ],
           ),
         ),

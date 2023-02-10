@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:registro_ponto/src/shared/utils/constants/app_icons.dart';
-
-import 'package:registro_ponto/src/widgets/icon_button/custom_icon_button.dart';
+import 'package:iconsax/iconsax.dart';
 
 class UserPicCard extends StatelessWidget {
   const UserPicCard({Key? key}) : super(key: key);
@@ -16,9 +14,10 @@ class UserPicCard extends StatelessWidget {
           width: 162,
           height: 162,
           child: const Center(
-            child: IconButtonC(
-              icon: AppIcons.user,
+            child: Icon(
+              Iconsax.user,
               size: 64,
+              color: Colors.white,
             ),
           ),
         ),
